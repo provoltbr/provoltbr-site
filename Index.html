@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Provolt · Manutenção de condomínios em Fortaleza</title>
+<meta name="description" content="Manutenção elétrica, hidráulica e civil para condomínios em Fortaleza, com plano preventivo e registro de cada serviço em sistema próprio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#FFFFFF; --bg-alt:#F4F6F8; --ink:#14202B; --ink-soft:#4F5B68; --title:#0A3D62;
+  --line:#E2E7EC; --azul:#0A3D62; --azul-face:#0A3D62; --teal:#12A4A0; --ambar:#F5A623;
+  --band:#0A3D62; --band-ink:#FFFFFF; --band-soft:#BFD0DE; --phone:#14202B; --screen:#FFFFFF; --chip:#F4F6F8;
+  --head-bg:rgba(255,255,255,.88);
+  --display:"Archivo","Arial Black",system-ui,sans-serif; --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0E1720; --bg-alt:#14202B; --ink:#EDF1F4; --ink-soft:#A8B3BE; --title:#9CC3E6;
+    --line:#22303C; --azul-face:#3E7CB1; --band:#14202B; --band-ink:#FFFFFF; --band-soft:#A8B3BE;
+    --phone:#05090D; --screen:#16222E; --chip:#1F2D3A; --head-bg:rgba(14,23,32,.88);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0E1720; --bg-alt:#14202B; --ink:#EDF1F4; --ink-soft:#A8B3BE; --title:#9CC3E6;
+  --line:#22303C; --azul-face:#3E7CB1; --band:#14202B; --band-ink:#FFFFFF; --band-soft:#A8B3BE;
+  --phone:#05090D; --screen:#16222E; --chip:#1F2D3A; --head-bg:rgba(14,23,32,.88);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--head-bg);backdrop-filter:blur(12px)}
+img,svg{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ambar);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:var(--display);font-stretch:112%;color:var(--title);line-height:1.08;margin:0;letter-spacing:-.01em}
+h1{font-weight:850;font-size:clamp(2.3rem,5.4vw,4.1rem)}
+h2{font-weight:800;font-size:clamp(1.8rem,3.6vw,2.7rem)}
+h3{font-weight:750;font-size:1.3rem;font-stretch:108%}
+p{margin:0}
+.lead{font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--ink-soft);max-width:34em}
+
+/* logo */
+.logo{height:34px;width:auto;display:block;color:var(--ink)}
+.logo .f-top{fill:var(--ambar)} .logo .f-left{fill:var(--azul-face)} .logo .f-right{fill:var(--teal)}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--head-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+nav a{text-decoration:none;font-weight:500;font-size:15px;color:var(--ink-soft)}
+nav a:hover{color:var(--ink)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 16px/1 var(--body);text-decoration:none;border-radius:999px;padding:16px 26px;transition:transform .15s ease,background-color .15s ease}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-main{background:var(--ambar);color:#14202B}
+.btn-main:hover{background:#FFB940}
+.btn-main:active{transform:scale(.98)}
+.btn-ghost{color:var(--title);padding-inline:6px;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:2px}
+.btn-small{padding:11px 18px;font-size:15px}
+
+/* hero */
+.hero{padding:72px 0 88px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:48px}
+.hero h1{max-width:12em}
+.hero .lead{margin-top:22px}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:34px}
+.hero-cube{width:100%;max-width:440px;height:auto;display:block;margin-inline:auto;overflow:visible}
+.face path{transition:filter .2s ease}
+.face-top path{fill:var(--ambar)} .face-left path{fill:var(--azul-face)} .face-right path{fill:var(--teal)}
+.face:hover path,.face:focus-visible path{filter:brightness(1.12)}
+.face:focus-visible{outline:none}
+.face:focus-visible path{stroke:var(--ink);stroke-width:4}
+.lbl{font:800 30px var(--display);font-stretch:112%;fill:#FFFFFF;pointer-events:none}
+.lbl-dark{fill:#14202B}
+.hint{font-size:14px;color:var(--ink-soft);text-align:center;margin-top:14px}
+@keyframes inTop{from{transform:translateY(-60px);opacity:0}}
+@keyframes inLeft{from{transform:translate(-52px,30px);opacity:0}}
+@keyframes inRight{from{transform:translate(52px,30px);opacity:0}}
+.face-top{animation:inTop .9s cubic-bezier(.2,.8,.2,1) .15s both}
+.face-left{animation:inLeft .9s cubic-bezier(.2,.8,.2,1) .35s both}
+.face-right{animation:inRight .9s cubic-bezier(.2,.8,.2,1) .55s both}
+@media (prefers-reduced-motion:reduce){.face-top,.face-left,.face-right{animation:none}html{scroll-behavior:auto}}
+
+/* services */
+.services{background:var(--bg-alt);padding:96px 0}
+.services header.intro{position:static;background:none;border:0;backdrop-filter:none;max-width:40em}
+.intro .lead{margin-top:16px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border-top:1px solid var(--line)}
+.svc{padding:34px 30px 8px 0}
+.svc + .svc{padding-left:30px;border-left:1px solid var(--line)}
+.svc h3{display:flex;align-items:center;gap:12px}
+.micon{width:30px;height:30px;flex:none}
+.micon .off{fill:var(--line)}
+.micon-top .on{fill:var(--ambar)} .micon-left .on{fill:var(--azul-face)} .micon-right .on{fill:var(--teal)}
+.svc ul{list-style:none;margin:20px 0 0;padding:0}
+.svc li{padding:11px 0;border-bottom:1px solid var(--line);color:var(--ink-soft)}
+.svc li:last-child{border-bottom:0}
+
+/* tipos de condomínio */
+.older{padding:104px 0}
+.older .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.older dl{margin:0;display:grid;gap:30px}
+.older dt{font:700 1.12rem/1.3 var(--body);color:var(--ink)}
+.older dd{margin:6px 0 0;color:var(--ink-soft)}
+
+/* system */
+.system{background:var(--bg-alt);padding:104px 0}
+.system .wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.feat{margin-top:34px;display:grid;gap:22px}
+.feat div{padding-left:20px;border-left:3px solid var(--teal)}
+.feat b{display:block;color:var(--ink);font-weight:600}
+.feat span{color:var(--ink-soft)}
+.phone{width:min(330px,100%);margin-inline:auto;background:var(--phone);border-radius:44px;padding:12px;box-shadow:0 30px 60px -30px rgba(10,61,98,.45)}
+.screen{background:var(--screen);border-radius:34px;overflow:hidden;font-size:13.5px;line-height:1.4}
+.s-top{background:#0A3D62;color:#fff;padding:22px 20px 18px}
+.s-top small{display:block;opacity:.75;font-size:12px}
+.s-top strong{font:800 18px var(--display);font-stretch:108%}
+.s-tabs{display:flex;gap:6px;padding:14px 16px 4px}
+.s-tabs span{white-space:nowrap;padding:6px 12px;border-radius:999px;background:var(--chip);color:var(--ink-soft);font-weight:500;font-size:12.5px}
+.s-tabs span.on{background:#0A3D62;color:#fff}
+.os{margin:10px 16px;padding:14px;border:1px solid var(--line);border-radius:16px}
+.os p{color:var(--ink);font-weight:600}
+.os em{font-style:normal;color:var(--ink-soft);font-size:12.5px;display:block;margin-top:3px}
+.st{display:inline-block;margin-top:9px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px}
+.st-ok{background:rgba(18,164,160,.16);color:#0E7F7C}
+.st-go{background:rgba(245,166,35,.2);color:#9A5E00}
+.st-plan{background:rgba(10,61,98,.12);color:#0A3D62}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .st-ok{color:#5FD3CF}:root:not([data-theme="light"]) .st-go{color:#F8C46A}:root:not([data-theme="light"]) .st-plan{color:#9CC3E6;background:rgba(156,195,230,.15)}}
+:root[data-theme="dark"] .st-ok{color:#5FD3CF}:root[data-theme="dark"] .st-go{color:#F8C46A}:root[data-theme="dark"] .st-plan{color:#9CC3E6;background:rgba(156,195,230,.15)}
+.s-rep{margin:14px 16px 20px;padding:14px;border-radius:16px;background:#12A4A0;color:#fff}
+.s-rep b{font:800 19px var(--display)}
+.caption{text-align:center;font-size:13px;color:var(--ink-soft);margin-top:14px}
+
+/* steps */
+.steps{padding:104px 0}
+.steps ol{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;counter-reset:s}
+.steps li{counter-increment:s;position:relative;padding-top:58px}
+.steps li::before{content:counter(s);position:absolute;top:0;left:0;font:850 44px/1 var(--display);font-stretch:118%;color:var(--ambar)}
+.steps li::after{content:"";position:absolute;top:22px;left:44px;right:-14px;height:2px;background:var(--line)}
+.steps li:last-child::after{display:none}
+.steps h3{font-size:1.15rem}
+.steps p{margin-top:8px;color:var(--ink-soft)}
+
+/* plans */
+.plans{padding:0 0 104px}
+.plan-row{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:28px;overflow:hidden}
+.plan{padding:40px}
+.plan + .plan{border-left:1px solid var(--line);background:var(--bg-alt)}
+.plan p{margin-top:12px;color:var(--ink-soft)}
+
+/* contact band */
+.band{background:var(--band);color:var(--band-ink);padding:96px 0}
+.band .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+.band h2{color:#fff}
+.band .lead{color:var(--band-soft);margin-top:18px}
+.contact{display:grid;gap:18px;justify-items:start}
+.contact a.tel{font:800 clamp(1.5rem,3vw,2rem) var(--display);font-stretch:110%;text-decoration:none;color:#fff}
+.contact small{color:var(--band-soft);font-size:15px}
+
+footer{padding:40px 0 48px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;color:var(--ink-soft);font-size:14px}
+.logo-foot{height:28px}
+
+/* floating button (mobile) */
+.float{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:58px;height:58px;border-radius:50%;background:var(--ambar);color:#14202B;display:none;place-items:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.4)}
+.float svg{width:26px;height:26px}
+
+@media (max-width:900px){
+  nav{display:none}
+  .hero{padding:40px 0 64px}
+  .hero .wrap,.older .wrap,.system .wrap,.band .wrap{grid-template-columns:1fr;gap:40px}
+  .hero-art{order:-1}
+  .hero-cube{max-width:240px}
+  .svc-grid{grid-template-columns:1fr;border-top:0}
+  .svc,.svc + .svc{padding:28px 0 4px;border-left:0;border-top:1px solid var(--line)}
+  .steps ol{grid-template-columns:1fr 1fr;gap:36px 24px}
+  .steps li::after{display:none}
+  .plan-row{grid-template-columns:1fr}
+  .plan + .plan{border-left:0;border-top:1px solid var(--line)}
+  .plan{padding:30px 26px}
+  .float{display:grid}
+  .bar .btn-small span{display:none}
+  .bar .btn-small{padding:11px}
+}
+@media (max-width:520px){ .steps ol{grid-template-columns:1fr} .logo{height:28px} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a href="#inicio" aria-label="Provolt, início"><svg class="logo" viewBox="0 0 806 200" role="img" aria-label="Provolt"><path class="f-top" d="M86.6,5.2 L164.2,50.0 L86.6,94.8 L9.0,50.0Z"/><path class="f-left" d="M4.5,57.8 L82.1,102.6 L82.1,192.2 L4.5,147.4Z"/><path class="f-right" d="M91.1,102.6 L168.7,57.8 L168.7,147.4 L91.1,192.2Z"/><path fill="currentColor" d="M221.9 143.7H246.3V117.3H259C279.8 117.3 292.9 105.5 292.9 86.8C292.9 68.1 279.8 56.3 259 56.3H221.9ZM246.3 97.2V76.4H257.2C264.5 76.4 269.1 80.4 269.1 86.8C269.1 93.2 264.5 97.2 257.2 97.2ZM302 143.7H326.4V116.3H337.3L350.4 143.7H375.8L359.8 111.1C368.3 106 373.1 97.7 373.1 86.8C373.1 68.1 360 56.3 339.1 56.3H302ZM326.4 97.5V76.2H337.3C344.6 76.2 349.3 80.4 349.3 86.8C349.3 93.2 344.6 97.5 337.3 97.5ZM424.4 145.1C448.1 145.1 466.8 129.2 466.8 100.1C466.8 70.9 448.1 54.9 424.4 54.9C400.5 54.9 382 70.9 382 100.1C382 129 400.5 145.1 424.4 145.1ZM424.4 124C413 124 406.6 115.1 406.6 100.1C406.6 84.9 413 76 424.4 76C435.9 76 442.2 84.9 442.2 100.1C442.2 115.1 435.9 124 424.4 124ZM500.9 143.7H533.2L561.6 56.3H535.1L525.4 90.2C522.5 100.4 519.8 110.5 517.1 120.7C514.4 110.5 511.6 100.4 508.5 90.2L498.4 56.3H471.6ZM608.7 145.1C632.4 145.1 651.1 129.2 651.1 100.1C651.1 70.9 632.4 54.9 608.7 54.9C584.9 54.9 566.3 70.9 566.3 100.1C566.3 129 584.9 145.1 608.7 145.1ZM608.7 124C597.3 124 590.9 115.1 590.9 100.1C590.9 84.9 597.3 76 608.7 76C620.2 76 626.5 84.9 626.5 100.1C626.5 115.1 620.2 124 608.7 124ZM660.6 143.7H722.6V123H684.9V56.3H660.6ZM729.7 77H754.5V143.7H778.9V77H803.7V56.3H729.7Z"/></svg></a>
+    <nav aria-label="Seções">
+      <ul>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#gestao">Gestão da manutenção</a></li>
+        <li><a href="#como-funciona">Como funciona</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-main btn-small wa" href="#contato" aria-label="Chamar no WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.6L3 21l1.9-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg><span>Chamar no WhatsApp</span></a>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Manutenção de condomínio com plano, prazo e registro.</h1>
+        <p class="lead">Elétrica, hidráulica e civil para condomínios em Fortaleza. Cada serviço fica registrado num sistema que o síndico acompanha pelo celular.</p>
+        <div class="actions">
+          <a class="btn btn-main wa" href="#contato"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.6L3 21l1.9-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>Pedir orçamento no WhatsApp</a>
+          <a class="btn btn-ghost" href="#gestao">Ver como acompanhamos cada serviço</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <svg class="hero-cube" viewBox="0 0 386 440" role="group" aria-label="Os três serviços da Provolt"><a href="#eletrica" class="face face-top" aria-label="Elétrica"><path d="M193.2,29.2 L350.4,120.0 L193.2,210.8 L36.0,120.0Z"/><text class="lbl lbl-dark" transform="matrix(0.866 -0.5 0.866 0.5 193.2 120.0)" text-anchor="middle" dominant-baseline="middle">Elétrica</text></a><a href="#civil" class="face face-left" aria-label="Civil"><path d="M28.0,133.9 L185.2,224.6 L185.2,406.1 L28.0,315.4Z"/><text class="lbl" transform="matrix(0.866 0.5 0 1 106.6 270.0)" text-anchor="middle" dominant-baseline="middle">Civil</text></a><a href="#hidraulica" class="face face-right" aria-label="Hidráulica"><path d="M201.2,224.6 L358.4,133.9 L358.4,315.4 L201.2,406.1Z"/><text class="lbl" transform="matrix(0.866 -0.5 0 1 279.8 270.0)" text-anchor="middle" dominant-baseline="middle">Hidráulica</text></a></svg>
+        <p class="hint">Toque numa face do cubo para ver os serviços.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="servicos">
+    <div class="wrap">
+      <header class="intro">
+        <h2>Três frentes, uma equipe só.</h2>
+        <p class="lead">O síndico fala com uma empresa e resolve elétrica, hidráulica e obra civil. Sem precisar coordenar três fornecedores.</p>
+      </header>
+      <div class="svc-grid">
+        <article class="svc" id="eletrica">
+          <h3><svg class="micon micon-top" viewBox="0 0 26 26" aria-hidden="true"><path d="M13.0,2.3 L21.2,7.0 L13.0,11.7 L4.8,7.0Z" class="on"/><path d="M3.7,8.9 L11.9,13.6 L11.9,23.1 L3.7,18.4Z" class="off"/><path d="M14.1,13.6 L22.3,8.9 L22.3,18.4 L14.1,23.1Z" class="off"/></svg>Elétrica</h3>
+          <ul>
+            <li>Quadros de distribuição e disjuntores</li>
+            <li>Iluminação de áreas comuns e garagens</li>
+            <li>SPDA (para-raios) e aterramento</li>
+            <li>Motores, bombas e portões automáticos</li>
+            <li>Adequação de instalações antigas</li>
+          </ul>
+        </article>
+        <article class="svc" id="hidraulica">
+          <h3><svg class="micon micon-right" viewBox="0 0 26 26" aria-hidden="true"><path d="M13.0,2.3 L21.2,7.0 L13.0,11.7 L4.8,7.0Z" class="off"/><path d="M3.7,8.9 L11.9,13.6 L11.9,23.1 L3.7,18.4Z" class="off"/><path d="M14.1,13.6 L22.3,8.9 L22.3,18.4 L14.1,23.1Z" class="on"/></svg>Hidráulica</h3>
+          <ul>
+            <li>Vazamentos em prumadas e áreas comuns</li>
+            <li>Bombas de recalque e barriletes</li>
+            <li>Reservatórios, boias e registros</li>
+            <li>Esgoto, caixas de passagem e drenagem</li>
+            <li>Troca de tubulações antigas</li>
+          </ul>
+        </article>
+        <article class="svc" id="civil">
+          <h3><svg class="micon micon-left" viewBox="0 0 26 26" aria-hidden="true"><path d="M13.0,2.3 L21.2,7.0 L13.0,11.7 L4.8,7.0Z" class="off"/><path d="M3.7,8.9 L11.9,13.6 L11.9,23.1 L3.7,18.4Z" class="on"/><path d="M14.1,13.6 L22.3,8.9 L22.3,18.4 L14.1,23.1Z" class="off"/></svg>Civil</h3>
+          <ul>
+            <li>Infiltrações e impermeabilização</li>
+            <li>Pintura de áreas comuns</li>
+            <li>Revestimentos, pisos e alvenaria</li>
+            <li>Pequenas reformas de portaria e salões</li>
+            <li>Reparos em calçadas e muros</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="older" id="condominios" aria-labelledby="seg-t">
+    <div class="wrap">
+      <div>
+        <h2 id="seg-t">Do prédio residencial ao condomínio logístico.</h2>
+        <p class="lead" style="margin-top:18px">Condomínios de perfis diferentes, atendidos com o mesmo método: plano, execução e registro de cada serviço.</p>
+      </div>
+      <dl>
+        <div><dt>Condomínios residenciais e comerciais</dt><dd>Áreas comuns, garagens, bombas, portões e fachadas, com os chamados do síndico atendidos e registrados.</dd></div>
+        <div><dt>Condomínios logísticos</dt><dd>Vias internas, iluminação de pátios, portarias, redes de água e drenagem e áreas comuns entre os galpões. Rotina planejada para não interromper a operação dos usuários.</dd></div>
+        <div><dt>Equipe residente</dt><dd>Para condomínios maiores, uma equipe fixa no local, com eletricista, artífice e ajudante, seguindo um plano de manutenção controlado pelo sistema.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="system" id="gestao">
+    <div class="wrap">
+      <div>
+        <h2>O síndico vê tudo o que foi feito, quando quiser.</h2>
+        <p class="lead" style="margin-top:18px">Usamos um sistema próprio de gestão da manutenção. Ele organiza o trabalho da equipe e mostra ao condomínio, com clareza, o que foi feito e o que vem pela frente.</p>
+        <div class="feat">
+          <div><b>Plano preventivo no calendário</b><span>As revisões do condomínio entram no sistema e viram ordens de serviço na data certa.</span></div>
+          <div><b>Chamados registrados</b><span>Pedido feito pelo WhatsApp vira ordem de serviço, com responsável, prazo e status.</span></div>
+          <div><b>Fotos de antes e depois</b><span>Cada serviço fica guardado no histórico do equipamento ou do local.</span></div>
+          <div><b>Relatório mensal</b><span>Pronto para levar ao conselho e à assembleia, sem montar planilha.</span></div>
+        </div>
+      </div>
+      <figure style="margin:0">
+        <div class="phone" aria-label="Exemplo da tela do sistema" role="img">
+          <div class="screen">
+            <div class="s-top"><small>Gestão da manutenção</small><strong>Condomínio Exemplo</strong></div>
+            <div class="s-tabs"><span class="on">Serviços</span><span>Plano</span><span>Relatórios</span></div>
+            <div class="os"><p>Revisão do quadro geral</p><em>Preventiva · Elétrica · 05/11</em><span class="st st-ok">Concluída · 4 fotos</span></div>
+            <div class="os"><p>Vazamento na garagem, bloco B</p><em>Chamado · Hidráulica · 07/11</em><span class="st st-go">Em andamento</span></div>
+            <div class="os"><p>Limpeza do reservatório superior</p><em>Preventiva · Hidráulica · 12/11</em><span class="st st-plan">Agendada</span></div>
+            <div class="s-rep">Outubro<br><b>18 serviços concluídos</b><br>Nenhuma pendência em atraso</div>
+          </div>
+        </div>
+        <figcaption class="caption">Tela ilustrativa, com dados de exemplo.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="steps" id="como-funciona">
+    <div class="wrap">
+      <h2>Como começamos com o seu condomínio</h2>
+      <ol>
+        <li><h3>Visita técnica</h3><p>Percorremos o prédio e listamos o estado das instalações elétricas, hidráulicas e civis.</p></li>
+        <li><h3>Plano e proposta</h3><p>Você recebe o plano de manutenção do prédio e a proposta, com prioridades claras.</p></li>
+        <li><h3>Execução</h3><p>Equipe identificada e uniformizada, com horário combinado com a portaria.</p></li>
+        <li><h3>Acompanhamento</h3><p>Cada serviço registrado no sistema, com relatório mensal para o síndico.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="plans" aria-label="Formas de contratação">
+    <div class="wrap">
+      <div class="plan-row">
+        <div class="plan"><h3>Contrato mensal</h3><p>Plano preventivo, atendimento aos chamados e relatório todo mês. Indicado para quem quer previsibilidade no orçamento do condomínio.</p></div>
+        <div class="plan"><h3>Serviço avulso</h3><p>Um reparo ou uma pequena reforma, com orçamento fechado antes de começar e registro do serviço entregue.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="contato">
+    <div class="wrap">
+      <div>
+        <h2>Conte o que o seu condomínio precisa.</h2>
+        <p class="lead">Respondemos pelo WhatsApp e agendamos a visita técnica. Atendemos condomínios em Fortaleza.</p>
+      </div>
+      <div class="contact">
+        <a class="btn btn-main wa" href="#contato"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.6L3 21l1.9-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>Pedir orçamento no WhatsApp</a>
+        <a class="tel" href="tel:+5585999528676">(85) 99952-8676</a>
+        <small>Segunda a sexta, das 8h às 18h</small>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <svg class="logo logo-foot" viewBox="0 0 806 200" role="img" aria-label="Provolt"><path class="f-top" d="M86.6,5.2 L164.2,50.0 L86.6,94.8 L9.0,50.0Z"/><path class="f-left" d="M4.5,57.8 L82.1,102.6 L82.1,192.2 L4.5,147.4Z"/><path class="f-right" d="M91.1,102.6 L168.7,57.8 L168.7,147.4 L91.1,192.2Z"/><path fill="currentColor" d="M221.9 143.7H246.3V117.3H259C279.8 117.3 292.9 105.5 292.9 86.8C292.9 68.1 279.8 56.3 259 56.3H221.9ZM246.3 97.2V76.4H257.2C264.5 76.4 269.1 80.4 269.1 86.8C269.1 93.2 264.5 97.2 257.2 97.2ZM302 143.7H326.4V116.3H337.3L350.4 143.7H375.8L359.8 111.1C368.3 106 373.1 97.7 373.1 86.8C373.1 68.1 360 56.3 339.1 56.3H302ZM326.4 97.5V76.2H337.3C344.6 76.2 349.3 80.4 349.3 86.8C349.3 93.2 344.6 97.5 337.3 97.5ZM424.4 145.1C448.1 145.1 466.8 129.2 466.8 100.1C466.8 70.9 448.1 54.9 424.4 54.9C400.5 54.9 382 70.9 382 100.1C382 129 400.5 145.1 424.4 145.1ZM424.4 124C413 124 406.6 115.1 406.6 100.1C406.6 84.9 413 76 424.4 76C435.9 76 442.2 84.9 442.2 100.1C442.2 115.1 435.9 124 424.4 124ZM500.9 143.7H533.2L561.6 56.3H535.1L525.4 90.2C522.5 100.4 519.8 110.5 517.1 120.7C514.4 110.5 511.6 100.4 508.5 90.2L498.4 56.3H471.6ZM608.7 145.1C632.4 145.1 651.1 129.2 651.1 100.1C651.1 70.9 632.4 54.9 608.7 54.9C584.9 54.9 566.3 70.9 566.3 100.1C566.3 129 584.9 145.1 608.7 145.1ZM608.7 124C597.3 124 590.9 115.1 590.9 100.1C590.9 84.9 597.3 76 608.7 76C620.2 76 626.5 84.9 626.5 100.1C626.5 115.1 620.2 124 608.7 124ZM660.6 143.7H722.6V123H684.9V56.3H660.6ZM729.7 77H754.5V143.7H778.9V77H803.7V56.3H729.7Z"/></svg>
+    <span>Manutenção elétrica, hidráulica e civil para condomínios em Fortaleza, CE</span>
+    <span>© 2026 Provolt</span>
+  </div>
+</footer>
+
+<a class="float wa" href="#contato" aria-label="Pedir orçamento no WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.6L3 21l1.9-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg></a>
+
+<script>
+  // Todos os botões de WhatsApp apontam para o mesmo número, com mensagem pronta.
+  (function(){
+    var url = "https://wa.me/5585999528676?text=" + encodeURIComponent("Olá! Vim pelo site da Provolt e gostaria de um orçamento para o meu condomínio.");
+    document.querySelectorAll("a.wa").forEach(function(a){ a.href = url; a.target = "_blank"; a.rel = "noopener"; });
+  })();
+</script>
+</body>
+</html>
